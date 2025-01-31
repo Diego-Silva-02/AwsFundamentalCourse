@@ -8,10 +8,10 @@ var sqsClient = new AmazonSQSClient();
 var customer = new CostumerCreated
 {
     Id = Guid.NewGuid(),
-    Email = "diegosilva22a@gmail.com",
-    FullName = "Diego Silva",
+    Email = "email@email.com",
+    FullName = "FullName",
     DateOfBirth = new DateTime(2001, 8, 28),
-    GitHubUserName = "Diego-Silva-02"
+    GitHubUserName = "GitHubUserName"
 };
 
 var queueUrlResponse = await sqsClient.GetQueueUrlAsync("customers");
@@ -23,7 +23,7 @@ var sendMessageRequest = new SendMessageRequest
     MessageAttributes = new Dictionary<string, MessageAttributeValue>
     {
         {
-            "MessgeType", new MessageAttributeValue
+            "MessageType", new MessageAttributeValue
             {
                 DataType = "String",
                 StringValue = nameof(CostumerCreated)
